@@ -1,5 +1,6 @@
 package co.com.udea.certificacion.creditsim.tasks;
 
+import co.com.udea.certificacion.creditsim.userinterfaces.FreeInvestmentPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -46,5 +47,12 @@ public class FindThe implements Task {
 
     public static FindThe homeValueSimButton() {
         return instrumented(FindThe.class, "home value sim button");
+    }
+
+    public static FindThe continueButton(){return instrumented(FindThe.class, "button-primary");}
+
+    public static Task loanSimulatorButton() {return Task.where("{0} finds the loan simulator button",
+                Click.on(FreeInvestmentPage.LOAN_SIMULATOR_BUTTON)
+        );
     }
 }

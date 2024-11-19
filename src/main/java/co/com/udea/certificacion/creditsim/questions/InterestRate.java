@@ -1,13 +1,14 @@
 package co.com.udea.certificacion.creditsim.questions;
 
+import co.com.udea.certificacion.creditsim.userinterfaces.SimulatorPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
-import static co.com.udea.certificacion.creditsim.userinterfaces.SimulatorModalPage.*;
+
 
 public class InterestRate implements Question<String> {
     @Override
     public String answeredBy(Actor actor) {
-        return ANNUAL_RATE.resolveFor(actor).getText();
+        return "SimulatorPage.resolveFor(actor).getText()";
     }
 
     public static Question<String> shown() {

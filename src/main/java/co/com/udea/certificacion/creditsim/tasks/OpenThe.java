@@ -15,11 +15,12 @@ public class OpenThe implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Click.on(SIMULATOR_OPTION)
+                Click.on("SIMULATOR_OPTION")
         );
     }
 
     public static OpenThe simulator(String text) {
         return Tasks.instrumented(OpenThe.class, text);
     }
+
 }

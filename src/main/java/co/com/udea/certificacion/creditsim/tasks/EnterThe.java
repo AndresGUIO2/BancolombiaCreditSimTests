@@ -6,7 +6,6 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.SendKeys;
 import net.serenitybdd.screenplay.targets.Target;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-
 import static co.com.udea.certificacion.creditsim.userinterfaces.SimulatorPage.*;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isPresent;
@@ -44,4 +43,6 @@ public class EnterThe implements Task {
     public static EnterThe birthdate(String value) {
         return instrumented(EnterThe.class, value, BIRTHDATE_INPUT);
     }
+
+
 }

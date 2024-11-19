@@ -1,13 +1,18 @@
 package co.com.udea.certificacion.creditsim.tasks;
 
+import co.com.udea.certificacion.creditsim.userinterfaces.FreeInvestmentPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
+import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.targets.Target;
 import org.openqa.selenium.JavascriptExecutor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+
+import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class SelectThe implements Task {
     private final String term;
@@ -116,6 +121,6 @@ public class SelectThe implements Task {
     }
 
     public static SelectThe loanTerm(String term) {
-        return Tasks.instrumented(SelectThe.class, term);
+        return instrumented(SelectThe.class, term);
     }
 }

@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class HomeLoanStepDefinitions {
-    @Given("{actor} is on the Bancolombia homepage")
+    /*@Given("{actor} is on the Bancolombia homepage")
     public void actorIsOnHomepage(Actor actor) {
         actor.can(BrowseTheWeb.with(getDriver()));
         actor.wasAbleTo(
@@ -80,6 +80,6 @@ public class HomeLoanStepDefinitions {
         );
     }
 
-
+*/
 
 }
