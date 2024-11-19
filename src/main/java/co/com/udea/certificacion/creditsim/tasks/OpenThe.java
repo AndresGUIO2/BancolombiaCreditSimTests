@@ -4,10 +4,8 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.Enter;
 
 import static co.com.udea.certificacion.creditsim.userinterfaces.HomeLoanPage.*;
-import static co.com.udea.certificacion.creditsim.userinterfaces.SimulatorModalPage.*;
 
 public class OpenThe implements Task {
 

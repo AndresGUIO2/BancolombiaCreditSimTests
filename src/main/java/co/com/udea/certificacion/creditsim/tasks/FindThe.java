@@ -2,11 +2,12 @@ package co.com.udea.certificacion.creditsim.tasks;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import static co.com.udea.certificacion.creditsim.userinterfaces.HomeLoanPage.*;
-
+import static net.serenitybdd.screenplay.Tasks.instrumented;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
 
 public class FindThe implements Task {
     private final String elementToFind;
@@ -19,23 +20,31 @@ public class FindThe implements Task {
     public <T extends Actor> void performAs(T actor) {
         switch (elementToFind.toLowerCase()) {
             case "loan button":
-                actor.attemptsTo(Click.on(LOAN_BUTTON));
+                actor.attemptsTo(
+                        WaitUntil.the(LOAN_BUTTON, isClickable()),
+                        Click.on(LOAN_BUTTON)
+                );
                 break;
-            case "google logo":
-                actor.attemptsTo(Click.on(GOOGLE_LOGO));
+            case "home value sim button":
+                actor.attemptsTo(
+                        WaitUntil.the(HOME_VALUE_SIM_BUTTON , isPresent()),
+                        WaitUntil.the(HOME_VALUE_SIM_BUTTON , isEnabled()),
+                        WaitUntil.the(HOME_VALUE_SIM_BUTTON , isClickable()),
+                        Click.on(HOME_VALUE_SIM_BUTTON )
+                );
                 break;
         }
     }
 
     public static FindThe element(String elementToFind) {
-        return Tasks.instrumented(FindThe.class, elementToFind);
+        return instrumented(FindThe.class, elementToFind);
     }
 
     public static FindThe loanButton() {
-        return Tasks.instrumented(FindThe.class, "loan button");
+        return instrumented(FindThe.class, "loan button");
     }
 
-    public static FindThe googleLogo() {
-        return Tasks.instrumented(FindThe.class, "google logo");
+    public static FindThe homeValueSimButton() {
+        return instrumented(FindThe.class, "home value sim button");
     }
 }

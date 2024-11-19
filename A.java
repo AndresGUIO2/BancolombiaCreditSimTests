@@ -6,15 +6,11 @@ webdriver {
     acceptInsecureCerts = true
     "goog:chromeOptions" {
       args = [
-        "remote-allow-origins=*",
-        "no-sandbox",
-        "ignore-certificate-errors",
-        "start-maximized",
-        "disable-dev-shm-usage",
-        "disable-web-security",
-        "disable-site-isolation-trials",
-        "disable-popup-blocking",
-        "disable-web-security"
+        "--remote-allow-origins=*",
+        "--no-sandbox",
+        "--ignore-certificate-errors",
+        "--start-maximized",
+        "--disable-dev-shm-usage"
       ]
       prefs {
         "profile.default_content_settings.cookies" = 1

@@ -6,6 +6,7 @@ import co.com.udea.certificacion.creditsim.questions.InterestRate;
 import co.com.udea.certificacion.creditsim.questions.LoanAmount;
 import co.com.udea.certificacion.creditsim.questions.MonthlyPayment;
 import co.com.udea.certificacion.creditsim.tasks.*;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -20,49 +21,47 @@ import static org.hamcrest.Matchers.equalTo;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class HomeLoanStepDefinitions {
-    @Given("{actor} is on the Banco de Bogota homepage")
+    @Given("{actor} is on the Bancolombia homepage")
     public void actorIsOnHomepage(Actor actor) {
         actor.can(BrowseTheWeb.with(getDriver()));
         actor.wasAbleTo(
-                NavigateTo.bancoDeBogota()
+                NavigateTo.bancolombia()
         );
     }
 
     @Given("{actor} navigates to the home loan section")
     public void navigateToHomeLoanSection(Actor actor) {
         actor.attemptsTo(
-
-                FindThe.googleLogo()
-                //OpenThe.simulator("Simulador")
+                FindThe.loanButton()
         );
     }
 
-    @When("{actor} enters monthly income:")
-    public void entersInitialIncome(Actor actor, DataTable dataTable) {
-        Map<String, String> data = dataTable.asMaps().get(0);
-        String income = data.get("initial_income");
+    @Given("he enters to the home value based simulation option")
+    public void heEntersToTheHomeValueBasedSimulationOption(Actor actor) {
         actor.attemptsTo(
-                EnterThe.income(income)
-        );
-    }
-
-    @When("{actor} enters age:")
-    public void entersInitialAge(Actor actor, DataTable dataTable) {
-        Map<String, String> data = dataTable.asMaps().get(0);
-        String age = data.get("initial_age");
-        actor.attemptsTo(
-                EnterThe.age(age)
+                FindThe.homeValueSimButton()
         );
     }
 
     @When("{actor} enters simulation details:")
     public void entersSimulationDetails(Actor actor, DataTable dataTable) {
         Map<String, String> data = dataTable.asMaps().get(0);
+
+        String commercialValue = data.get("commercial_value");
+        String percent = data.get("percent");
+        String desiredTerm = data.get("desired_term");
+        String birthdate = data.get("birthdate");
+
         actor.attemptsTo(
-                EnterThe.income(data.get("monthly_income")),
-                EnterThe.age(data.get("age")),
-                SelectThe.loanTerm(data.get("term"))
+            EnterThe.commercialValue(commercialValue),
+            EnterThe.commercialValue(percent),
+            EnterThe.commercialValue(desiredTerm),
+            EnterThe.commercialValue(birthdate)
         );
+    }
+
+    @And("{actor} clicks on {string} button")
+    public void heClicksOnButton(String arg0) {
     }
 
     @Then("{actor} should see loan information:")
@@ -80,4 +79,7 @@ public class HomeLoanStepDefinitions {
                         equalTo(expectedData.get("initial_fee")))
         );
     }
+
+
+
 }

@@ -4,24 +4,20 @@ Feature: Home Loan Simulator
   So that I can understand my borrowing capacity
 
   Background:
-    Given Juan is on the Banco de Bogota homepage
+    Given Juan is on the Bancolombia homepage
     And he navigates to the home loan section
 
-  Scenario Outline: Simulate home loan with different incomes and ages
-    When he enters monthly income:
-      | initial_income |
-      | <initial_income>|
-    And he enters age:
-      | initial_age |
-      | <initial_age>|
-    And he enters simulation details:
-      | monthly_income   | age   | term   |
-      | <sim_income>     | <sim_age> | <years> |
+  Scenario Outline: Simulate home loan by home value and percent
+    Given he enters to the home value based simulation option
+    When he enters simulation details:
+      | commercial_value  |  percent  |  desired_term  | birthdate   |
+      | <commercial_value>| <percent> | <desired_term> | <birthdate> |
+    And he clicks on "simular" button
     Then he should see loan information:
-      | loan_amount   | monthly_payment   | interest_rate   | initial_fee   |
-      | <amount>      | <payment>         | <rate>         | <fee>         |
+      | loan_amount   |  first_payment  |
+      | <loan_amount> | <first_payment> |
 
     Examples:
-      | initial_income | initial_age | sim_income | sim_age | years | amount        | payment     | rate    | fee         |
-      | 8000000       | 20          | 15000000   | 25      | 20    | 156.000.000  | 1.750.698  | 12.28%  | 9.000.000  |
-      | 10000000      | 30          | 18000000   | 35      | 15    | 180.000.000  | 2.100.500 |12.28%   | 9.000.000  |
+      | commercial_value | percent |  desired_term |  birthdate   | loan_amount | first_payment |
+      | 80000000         | 70%     |       25      |  10/1/1991   |   56000000  |     346469    |
+      | 120000000        | 80%     |       30      |  8/3/1960    |   96000000  |     549635    |
