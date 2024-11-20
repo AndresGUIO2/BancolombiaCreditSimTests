@@ -14,8 +14,10 @@ public class SimulatorPage {
             .locatedBy("//*[@id=\"calcular-cuotas\"]");
 
     public static final Target BIRTHDATE_INPUT = Target.the("Home loan button")
-            .locatedBy("//*[@id=\"calcular-cuotas\"]");
+            .locatedBy("//*[@id=\"campo-fecha\"]");
 
+    public static final Target SIMULATE_BUTTON = Target.the("Home loan button")
+            .locatedBy("//*[@id=\"boton-simular\"]");
 
 
 }

@@ -19,5 +19,5 @@ Feature: Home Loan Simulator
 
     Examples:
       | commercial_value | percent |  desired_term |  birthdate   | loan_amount | first_payment |
-      | 80000000         | 70%     |       25      |  10/1/1991   |   56000000  |     346469    |
+      | 80000000         | 70%     |       20      |  10/1/1991   |   56000000  |     559077    |
       | 120000000        | 80%     |       30      |  8/3/1960    |   96000000  |     549635    |
