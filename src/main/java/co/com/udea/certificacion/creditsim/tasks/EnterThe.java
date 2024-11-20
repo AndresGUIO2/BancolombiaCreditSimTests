@@ -1,6 +1,7 @@
 package co.com.udea.certificacion.creditsim.tasks;
 
 import co.com.udea.certificacion.creditsim.interactions.PickThe;
+import co.com.udea.certificacion.creditsim.interactions.SelectDate;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -9,6 +10,7 @@ import net.serenitybdd.screenplay.targets.Target;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import static co.com.udea.certificacion.creditsim.interactions.PickThe.valueFromDropdown;
+import static co.com.udea.certificacion.creditsim.interactions.SelectDate.with;
 import static co.com.udea.certificacion.creditsim.userinterfaces.SimulatorPage.*;
 
 import static co.com.udea.certificacion.creditsim.userinterfaces.SimulatorPage.*;
@@ -56,6 +58,14 @@ public class EnterThe implements Task {
     }
 
     public static EnterThe birthdate(String value) {
-        return instrumented(EnterThe.class, value, BIRTHDATE_INPUT);
+        return new EnterThe(value, BIRTHDATE_INPUT) {
+            String[] dateParts = value.split("/");
+            @Override
+            public <T extends Actor> void performAs(T actor) {
+                actor.attemptsTo(
+                        with(dateParts[2], dateParts[1], dateParts[0])
+                );
+            }
+        };
     }
 }

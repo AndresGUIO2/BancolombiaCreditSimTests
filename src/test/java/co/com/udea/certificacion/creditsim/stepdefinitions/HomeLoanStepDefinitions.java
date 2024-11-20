@@ -2,6 +2,7 @@ package co.com.udea.certificacion.creditsim.stepdefinitions;
 
 import co.com.udea.certificacion.creditsim.navigation.NavigateTo;
 import co.com.udea.certificacion.creditsim.tasks.*;
+import co.com.udea.certificacion.creditsim.interactions.SelectDate;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;

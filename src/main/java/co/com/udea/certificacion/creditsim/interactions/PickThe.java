@@ -19,8 +19,8 @@ public class PickThe implements Interaction {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Click.on(dropdown), // Abre el menú desplegable
-                Click.on(option)    // Selecciona la opción específica
+                Click.on(dropdown),
+                Click.on(option)
         );
     }
 
