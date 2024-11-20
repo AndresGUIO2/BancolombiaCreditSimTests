@@ -1,13 +1,27 @@
 package co.com.udea.certificacion.creditsim.interactions;
 
 import net.serenitybdd.screenplay.Question;
+import net.serenitybdd.screenplay.targets.Target;
 
-import static co.com.udea.certificacion.creditsim.userinterfaces.FreeInvestmentPage.FEES_FIELD;
+import static co.com.udea.certificacion.creditsim.userinterfaces.FreeInvestmentPage.*;
 
 public class LoanInfo {
-    public static Question<Boolean> feesAre(String expectedFees) {
+
+    private static Target getFeesFieldBasedOnAnswer(String answer) {
+        if ("Si".equalsIgnoreCase(answer)) {
+            return FEES_FIELD_YES; // Define este target en la clase FreeInvestmentPage
+        } else if ("No".equalsIgnoreCase(answer)) {
+            return FEES_FIELD_NO; // Define este target en la clase FreeInvestmentPage
+        } else {
+            throw new IllegalArgumentException("Respuesta inválida: " + answer);
+        }
+    }
+
+
+    public static Question<Boolean> feesAre(String expectedFees, String answer) {
         return actor -> {
-            String actualFees = FEES_FIELD.resolveFor(actor).getText(); // Define FEES_FIELD como el Target que apunta al campo de "fees"
+            Target feesField = getFeesFieldBasedOnAnswer(answer);
+            String actualFees = feesField.resolveFor(actor).getText();
             return actualFees.equals(expectedFees);
         };
     }

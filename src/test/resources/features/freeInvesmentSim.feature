@@ -10,6 +10,7 @@ Feature: Free Investment Loan Simulator
   Scenario Outline: Simulate free investment loan by amount and term
 
     When he answers the question "¿Sabes cuánto dinero necesitas?" with "<answer>"
+
     And he enters simulation details free investment:
       | amount |  deadline  | birthdate   |
       | <amount> | <deadline> | <birthdate> |

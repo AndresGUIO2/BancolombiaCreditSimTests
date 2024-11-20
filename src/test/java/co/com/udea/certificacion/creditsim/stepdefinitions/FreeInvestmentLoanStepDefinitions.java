@@ -10,6 +10,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 
+import java.util.List;
 import java.util.Map;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
@@ -37,6 +38,7 @@ public class FreeInvestmentLoanStepDefinitions {
         actor.attemptsTo(
                 SelectTheKnowMoneyNeed.answerToQuestion(answer)
         );
+        actor.remember("answer", answer);
 
     }
 
@@ -65,11 +67,16 @@ public class FreeInvestmentLoanStepDefinitions {
 
     @Then("{actor} should see loan information:")
     public void verifyLoanInformation(Actor actor, DataTable dataTable) {
-        Map<String, String> data = dataTable.asMaps().get(0);
-        // Iteramos sobre el mapa de tasas y las verificamos
-        data.forEach((key, expectedFee) ->
-                actor.should(seeThat(LoanInfo.feesAre(expectedFee)))
-        );
+        List<Map<String, String>> rows = dataTable.asMaps(String.class, String.class);
+        String answer = actor.recall("answer");
+        rows.forEach(row -> {
+            String expectedFee = row.get("fees_tf_cf");   // Obtén el valor esperado de la columna "fee"
+            System.out.println("Expected Fee: " + expectedFee);
+            // Verifica que la tasa esperada coincida para la respuesta dada
+            actor.should(
+                    seeThat(LoanInfo.feesAre(expectedFee, answer))
+            );
+        });
     }
 
 

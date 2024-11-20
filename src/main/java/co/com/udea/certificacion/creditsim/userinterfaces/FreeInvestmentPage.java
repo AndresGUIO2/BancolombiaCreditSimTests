@@ -5,11 +5,13 @@ import net.serenitybdd.screenplay.targets.Target;
 public class FreeInvestmentPage {
 
     // XPath para las tasas de interés cuando la respuesta es 'Sí'
-    public static final String FEES_FOR_YES_XPATH = "//*[@id='valor-resultados-compras']";
+    public static final String FEES_FOR_YES_XPATH = "";
 
-    // XPath para las tasas de interés cuando la respuesta es 'No'
-    public static final String FEES_FOR_NO_XPATH = "//*[@id='layoutContainers']/div/div[2]/div/div[2]/div/section/div[2]/div[2]/app-root/div/app-resultado-simulacion/section[1]/swiper/div/div[1]/div[1]/div/div[2]/div/h4";
 
+    public static final Target FEES_FIELD_YES = Target.the("Fees field for YES option")
+            .locatedBy("//*[@id='valor-resultados-compras']");
+    public static final Target FEES_FIELD_NO = Target.the("Fees field for NO option")
+            .locatedBy("//*[@id=\"layoutContainers\"]/div/div[2]/div/div[2]/div/section/div[2]/div[2]/app-root/div/app-resultado-simulacion/section[1]/swiper/div/div[1]/div[1]/div/div[2]/div/h4");
     public static final Target LOAN_SIMULATOR_BUTTON = Target.the("Loan simulator button")
             .locatedBy("#loan-simulator-btn");
     public static final Target FEES_FIELD = Target.the("Fees output field")
