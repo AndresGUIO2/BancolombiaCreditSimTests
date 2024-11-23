@@ -3,6 +3,7 @@ package co.com.udea.certificacion.creditsim.stepdefinitions;
 import co.com.udea.certificacion.creditsim.navigation.NavigateTo;
 import co.com.udea.certificacion.creditsim.questions.ButtonIsDisabled;
 import co.com.udea.certificacion.creditsim.questions.ErrorMessageDisplayed;
+import co.com.udea.certificacion.creditsim.questions.LoanInformationDisplayed;
 import co.com.udea.certificacion.creditsim.tasks.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -72,8 +73,14 @@ public class HomeLoanStepDefinitions {
     public void shouldSeeLoanInformation(Actor actor, DataTable dataTable) {
         Map<String, String> expectedData = dataTable.asMaps().get(0);
 
-      /*  actor.should(
-        );*/
+        actor.should(
+                seeThat("The loan information is displayed correctly",
+                        LoanInformationDisplayed.matches(
+                                expectedData.get("loan_amount"),
+                                expectedData.get("first_payment")
+                        )
+                )
+        );
     }
 
     @When("{actor} enters a commercial value below 52000000 COP")

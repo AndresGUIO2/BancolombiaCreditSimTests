@@ -18,6 +18,10 @@ public class SimulatorPage {
     public static final Target BIRTHDATE_INPUT = Target.the("Home loan button")
             .locatedBy("//*[@id=\"campo-fecha\"]");
     public static final Target SIMULATE_BUTTON = Target.the("Home loan button")
-            .locatedBy("//*[@id=\"boton-simular\"]");;
+            .locatedBy("//*[@id=\"boton-simular\"]");
+    public static final Target FIRST_PAYMENT_LABEL = Target.the("Home loan button")
+            .locatedBy("//html/body/div[2]/div[2]/div/div[2]/div/div[2]/div/section/div[2]/div[2]/app-root/div[1]/app-results/section/div[1]/div[2]/div/swiper/div/div/div[2]/div/div[2]/h4");
+    public static final Target LOAN_LABEL = Target.the("Home loan button")
+            .locatedBy("//mat-form-field//input[@formcontrolname=\"valueToFinance\"]");
 
 }

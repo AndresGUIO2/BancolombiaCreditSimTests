@@ -44,7 +44,7 @@ public class SelectDate implements Task {
             if (Integer.parseInt(year) < Integer.parseInt(firstYearText)) {
                 actor.attemptsTo(
                         Click.on(SimulatorPage.PREVIOUS_YEARS_BUTTON),
-                        WaitUntil.the(firstYearCell, isPresent()).forNoMoreThan(5).seconds()
+                        WaitUntil.the(firstYearCell, isPresent()).forNoMoreThan(1).seconds()
                 );
                 continue;
             }

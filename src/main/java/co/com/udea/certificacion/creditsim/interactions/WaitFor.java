@@ -15,7 +15,7 @@ public class WaitFor implements Task {
     public <T extends Actor> void performAs(T actor) {
         WebDriverWait wait = new WebDriverWait(
                 BrowseTheWeb.as(actor).getDriver(),
-                Duration.ofSeconds(30)
+                Duration.ofSeconds(5)
         );
 
         wait.until(driver -> {
