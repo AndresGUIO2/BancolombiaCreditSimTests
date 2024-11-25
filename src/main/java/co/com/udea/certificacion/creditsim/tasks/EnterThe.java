@@ -13,7 +13,6 @@ import static co.com.udea.certificacion.creditsim.interactions.PickThe.valueFrom
 import static co.com.udea.certificacion.creditsim.interactions.SelectDate.with;
 import static co.com.udea.certificacion.creditsim.userinterfaces.SimulatorPage.*;
 
-import static co.com.udea.certificacion.creditsim.userinterfaces.SimulatorPage.*;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isPresent;
 
@@ -28,7 +27,6 @@ public class EnterThe implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-
             actor.attemptsTo(
                     WaitUntil.the(target, isPresent()),
                     Click.on(target),
@@ -51,6 +49,10 @@ public class EnterThe implements Task {
                 );
             }
         };
+    }
+
+    public static EnterThe loanAmount(String value) {
+        return instrumented(EnterThe.class, value, LOAN_AMOUNT_INPUT);
     }
 
     public static EnterThe desiredTerm(String value) {

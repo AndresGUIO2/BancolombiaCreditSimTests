@@ -1,16 +1,15 @@
 package co.com.udea.certificacion.creditsim.questions;
 
-import co.com.udea.certificacion.creditsim.interactions.TabManager;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.targets.Target;
 
 import static co.com.udea.certificacion.creditsim.userinterfaces.SimulatorPage.*;
 
-public class ButtonIsDisabled implements Question<Boolean>{
+public class IsButtonDisabled implements Question<Boolean>{
     private final String buttonName;
 
-    public ButtonIsDisabled(String buttonName) {
+    public IsButtonDisabled(String buttonName) {
         this.buttonName = buttonName;
     }
 
@@ -19,7 +18,6 @@ public class ButtonIsDisabled implements Question<Boolean>{
         Target button;
 
         switch (buttonName.toLowerCase()) {
-
             case "simular":
                 button = SIMULATE_BUTTON;
                 return !button.resolveFor(actor).isEnabled();
@@ -30,7 +28,7 @@ public class ButtonIsDisabled implements Question<Boolean>{
 
     }
 
-    public static ButtonIsDisabled named(String buttonName) {
-        return new ButtonIsDisabled(buttonName);
+    public static IsButtonDisabled named(String buttonName) {
+        return new IsButtonDisabled(buttonName);
     }
 }
