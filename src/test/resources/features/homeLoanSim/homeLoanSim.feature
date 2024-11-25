@@ -8,19 +8,36 @@ Feature: Home Loan Simulator
     And he navigates to the home loan section
     And he enters to the home value based simulation option
 
-  Scenario Outline: Successful simulation with valid data
+  Scenario Outline: Successful simulation with valid data for housing leasing
     When he enters simulation details:
-      | commercial_value  |  percent  |  desired_term  | birthdate   |
-      | <commercial_value>| <percent> | <desired_term> | <birthdate> |
+      | commercial_value  |  percent  |  desired_term  |  birthdate   |
+      | <commercial_value>| <percent> | <desired_term> | <birthdate>  |
     And he clicks on "SIMULAR" button
-    Then he should see loan information:
-      | loan_amount   |  first_payment  |
-      | <loan_amount> | <first_payment> |
+    And he waits for the captcha
+    And he clicks on "Leasing Habitacional" button
+    Then he should see home leasing loan information:
+      | fixed_fee   | constant_capital   |
+      | <fixed_fee> | <constant_capital> |
 
     Examples:
-      | commercial_value | percent |  desired_term |  birthdate   | loan_amount | first_payment |
-      | 80000000         | 70%     |       20      |  10/1/1982   |   56000000  |     559077    |
-      | 120000000        | 40%     |       30      |  8/3/2006    |   96000000  |     549635    |
+      | commercial_value | percent |  desired_term |  birthdate   | fixed_fee   | constant_capital |
+      | 300000000        | 70%     |       20      |  10/1/1982   | $ 2.096.120 | $ 2.705.241      |
+      | 195000000        | 40%     |       15      |  8/3/2006    | $ 860.226   | $ 1.111.007      |
+
+  Scenario Outline: Successful simulation with valid data for housing loan
+    When he enters simulation details:
+      | commercial_value  |  percent  |  desired_term  |  birthdate   |
+      | <commercial_value>| <percent> | <desired_term> | <birthdate>  |
+    And he clicks on "SIMULAR" button
+    And he waits for the captcha
+    Then he should see home loan information:
+      | fixed_fee   | constant_capital   | constant_fee |
+      | <fixed_fee> | <constant_capital> | <constant_fee> |
+
+    Examples:
+      | commercial_value | percent |  desired_term |  birthdate   | fixed_fee   | constant_capital | constant_fee |
+      | 300000000        | 70%     |       20      |  10/1/1982   | $ 2.098.650 | $ 2.099.992      | $ 1.629.432  |
+      | 195000000        | 40%     |       15      |  8/3/2006    | $ 861.982   | $ 795.193        | $ 640.351    |
 
   Scenario Outline: Immediate validation for commercial value bellow the allowed range
     When he enters a commercial value below 52000000 COP

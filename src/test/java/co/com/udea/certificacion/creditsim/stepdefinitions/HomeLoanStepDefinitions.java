@@ -70,12 +70,46 @@ public class HomeLoanStepDefinitions {
         );
     }
 
-    @Then("{actor} should see loan information:")
+    @And("{actor} waits for the captcha")
+    public void waitsForTheCaptcha(Actor actor) {
+        try {
+            Thread.sleep(15000); // 15 segundos
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt(); // Restaura el estado de interrupción
+        }
+    }
+
+    @Then("{actor} should see home leasing loan information:")
+    public void shouldSeeHomeLeasingLoanInformation(Actor actor, DataTable dataTable) {
+        Map<String, String> expectedData = dataTable.asMaps().get(0);
+
+        String fixedFee = expectedData.get("fixed_fee");
+        String constantCapital = expectedData.get("constant_capital");
+
+        actor.should(
+                seeThat("The housing leasing fixed fee label is displayed",
+                        IsTheValueIn.input("Housing leasing fixed fee label", fixedFee)),
+                seeThat("The housing leasing constant capital label is displayed",
+                        IsTheValueIn.input("Housing leasing constant capital label", constantCapital))
+        );
+    }
+
+    @Then("{actor} should see home loan information:")
     public void shouldSeeLoanInformation(Actor actor, DataTable dataTable) {
         Map<String, String> expectedData = dataTable.asMaps().get(0);
 
-      /*  actor.should(
-        );*/
+        String fixedFee = expectedData.get("fixed_fee");
+        String constantCapital = expectedData.get("constant_capital");
+        String constantFee = expectedData.get("constant_fee");
+
+        actor.should(
+                seeThat("The housing loan fixed fee label is displayed",
+                        IsTheValueIn.input("Housing loan fixed fee label", fixedFee)),
+                seeThat("The housing loan constant capital label is displayed",
+                        IsTheValueIn.input("Housing loan constant capital label", constantCapital)),
+                seeThat("The housing loan constant fee label is displayed",
+                        IsTheValueIn.input("Housing loan constant fee label", constantCapital))
+        );
     }
 
     @When("{actor} enters a commercial value below 52000000 COP")
@@ -154,7 +188,8 @@ public class HomeLoanStepDefinitions {
     public  void shouldSeeThatTheInputRemainSetTo(Actor actor, String input, String value){
         actor.should(
                 seeThat("The input remain set to 70%",
-                IsTheValueIn.input(input, value)));
+                IsTheValueIn.input(input, value))
+        );
     }
 
     @Then("{actor} should see the {string} updated to the corresponding value")

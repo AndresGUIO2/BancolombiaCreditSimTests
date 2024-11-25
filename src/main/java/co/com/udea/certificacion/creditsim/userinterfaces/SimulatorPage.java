@@ -18,7 +18,9 @@ public class SimulatorPage {
     public static final Target BIRTHDATE_INPUT = Target.the("Home loan button")
             .locatedBy("//*[@id=\"campo-fecha\"]");
     public static final Target SIMULATE_BUTTON = Target.the("Home loan button")
-            .locatedBy("//*[@id=\"boton-simular\"]");;
+            .locatedBy("//*[@id=\"boton-simular\"]");
+    public static final Target HOUSING_LEASING_BUTTON = Target.the("Leasing habitacional button")
+            .locatedBy("//*[@id=\"credit-on-UVR-button\"]/div");
     public static final Target INVALID_COMMERCIAL_VALUE_LABEL = Target.the("Invalid commercial value label")
             .locatedBy("//*[@id=\"error-valorProperty-minimo\"]");
     public static final Target INVALID_PERCENTAGE_LABEL = Target.the("Invalid percentage label")
@@ -27,4 +29,14 @@ public class SimulatorPage {
             .locatedBy("//*[@id=\"error-meses-minimo\"]");
     public static final Target INVALID_MAXIMUM_LOAN_TERM_LABEL = Target.the("Invalid maximum loan term label")
             .locatedBy("//*[@id=\"error-meses-maximo\"]");
+    public static final Target HOUSING_LEASING_FIXED_FEE_LABEL = Target.the("Housisng leasing fixed fee label")
+            .locatedBy("//*[@id=\"resultado-FIXEDRATEFIXEDFEE\"]");
+    public static final Target HOUSING_LOAN_FIXED_FEE_LABEL = Target.the("Housisng loan fixed fee label")
+            .locatedBy("//*[@id=\"resultado-FIXEDFEECOP\"]");
+    public static final Target HOUSING_LEASING_CONSTANT_CAPITAL_LABEL = Target.the("Housing leasing constant capital label")
+            .locatedBy("//*[@id=\"resultado-FIXEDRATECONSTANTCAPITAL\"]");
+    public static final Target HOUSING_LOAN_CONSTANT_CAPITAL_LABEL = Target.the("Housing loan constant capital label")
+            .locatedBy("//*[@id=\"resultado-CONSTANTAMORTIZATIONUVR\"]");
+    public static final Target HOUSING_LOAN_CONSTANT_FEE_LABEL = Target.the("Housing loan constant fee label")
+            .locatedBy("//*[@id=\"resultado-CONSTANTFEEUVR\"]");
 }

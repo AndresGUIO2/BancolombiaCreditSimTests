@@ -7,6 +7,7 @@ import co.com.udea.certificacion.creditsim.interactions.TabManager;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.waits.Wait;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
 
@@ -30,6 +31,7 @@ public class FindThe implements Task {
                         TabManager.switchToNewTabAndCloseOthers()
                 );
                 break;
+
             case "home loan button":
                 actor.attemptsTo(
                         WaitUntil.the(HOME_LOAN_BUTTON , isPresent()),
@@ -47,6 +49,14 @@ public class FindThe implements Task {
                         Click.on(SIMULATE_BUTTON)
                 );
                 break;
+
+            case "housing habitacional button":
+                actor.attemptsTo(
+                        WaitUntil.the(HOUSING_LEASING_BUTTON, isPresent()),
+                        WaitUntil.the(HOUSING_LEASING_BUTTON, isEnabled()),
+                        WaitUntil.the(HOUSING_LEASING_BUTTON, isClickable()),
+                        Click.on(HOUSING_LEASING_BUTTON)
+                );
 
             case "credit button":
                 actor.attemptsTo(
