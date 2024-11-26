@@ -1,5 +1,6 @@
 package co.com.udea.certificacion.creditsim.tasks;
 
+import co.com.udea.certificacion.creditsim.interactions.SelectDateFromDatePicker;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Clear;
@@ -29,10 +30,10 @@ public class EnterTheFV implements Task {
     public <T extends Actor> void performAs(T actor) {
         if (target.equals(BIRTHDATE_INPUT)) {
             actor.attemptsTo(
-                    Click.on(target) // Abre el datepicker
+                    Click.on(target)
             );
             actor.attemptsTo(
-                    SelectBirthdate.withDate(value) // Llama a la Task del datepicker
+                    SelectDateFromDatePicker.withDate(value)
             );
         } else {
             actor.attemptsTo(

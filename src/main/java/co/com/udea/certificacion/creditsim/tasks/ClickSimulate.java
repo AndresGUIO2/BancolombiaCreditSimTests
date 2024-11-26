@@ -25,7 +25,6 @@ public class ClickSimulate implements Task {
         );
     }
 
-    // Método para crear la tarea haciendo clic en el botón de simulación
     public static ClickSimulate clickOnSimulateButton() {
         return instrumented(ClickSimulate.class, SIMULATE_BUTTON);
     }
